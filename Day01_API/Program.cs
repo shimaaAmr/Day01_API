@@ -1,5 +1,7 @@
 
+using Day01_API.IRepository;
 using Day01_API.Models;
+using Day01_API.Repository;
 using Microsoft.EntityFrameworkCore;
 
 namespace Day01_API
@@ -18,6 +20,7 @@ namespace Day01_API
 			builder.Services.AddSwaggerGen();
 			builder.Services.AddDbContext<AppDbContext>(options =>
 			options.UseSqlServer(builder.Configuration.GetConnectionString("CS")));
+			builder.Services.AddScoped<ICourseRepo, CourseRepo>();
 
 			var app = builder.Build();
 
